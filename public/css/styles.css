@@ -1,11 +1,16 @@
 h1 {
-    margin-left: 6rem;    
-    margin-right: 6rem;    
+    margin-left: 10rem;    
+    margin-right: 20rem;    
 }
 
 p {
-    margin-left: 6rem;
-    margin-right: 6rem;
+    margin-left: 10rem;
+    margin-right: 20rem;
+}
+
+.form {
+    margin-left: 10rem;
+    margin-right: 20rem;
 }
 .container-fluid {
     padding-top: 70px;
