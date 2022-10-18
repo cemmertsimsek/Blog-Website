@@ -12,3 +12,5 @@ Methods and packages
 - bootstrap
 
 ![](https://media.giphy.com/media/wIL9sW7JWaW8hZ6rKC/giphy.gif)
+
+for full screen (low quality) https://giphy.com/gifs/wIL9sW7JWaW8hZ6rKC/fullscreen
