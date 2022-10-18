@@ -3,9 +3,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const _ = require("lodash");
+const _ = require("lodash"); //lodash used for _.lowerCase method
 
-let posts = [];
+let posts = []; // empty array for storing posts
 
 const homeStartingContent =
   "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
@@ -37,11 +37,12 @@ app.get("/contact", function (req, res) {
 });
 
 app.get("/compose", function (req, res) {
-  res.render("compose");
+  res.render("compose"); // compose page for adding new content to the blogs homepage
 });
 
 app.post("/compose", function (req, res) {
   const post = {
+    // storing new posts title and content to push it to the "posts" array
     title: req.body.postTitle,
     content: req.body.postBody,
   };
@@ -52,17 +53,19 @@ app.post("/compose", function (req, res) {
 
 //to define route parameters using express for dinamic URL
 app.get("/posts/:postName", function (req, res) {
-  const requestedTitle = _.lowerCase(req.params.postName); // storing requested title to compare later
+  const requestedTitle = _.lowerCase(req.params.postName); // storing requested title to compare later. using lodash => _.lowerCase method to store strings as lowercase
 
   posts.forEach((post) => {
     //loop through the each object and store the title name
-    const storedTitle = _.lowerCase(post.title);
+
+    const storedTitle = _.lowerCase(post.title); // using lodash => _.lowerCase method to store strings as lowercase
 
     if (requestedTitle === storedTitle) {
       //comparing the titles in order to get the correct page
-      console.log("Matching");
-    } else {
-      console.log("nothing matched");
+      res.render("post", {
+        title: post.title,
+        content: post.content,
+      });
     }
   });
 });
