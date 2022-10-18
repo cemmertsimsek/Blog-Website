@@ -3,7 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const { values } = require("lodash");
+const _ = require("lodash");
 
 let posts = [];
 
@@ -48,6 +48,23 @@ app.post("/compose", function (req, res) {
 
   posts.push(post);
   res.redirect("/");
+});
+
+//to define route parameters using express for dinamic URL
+app.get("/posts/:postName", function (req, res) {
+  const requestedTitle = _.lowerCase(req.params.postName); // storing requested title to compare later
+
+  posts.forEach((post) => {
+    //loop through the each object and store the title name
+    const storedTitle = _.lowerCase(post.title);
+
+    if (requestedTitle === storedTitle) {
+      //comparing the titles in order to get the correct page
+      console.log("Matching");
+    } else {
+      console.log("nothing matched");
+    }
+  });
 });
 
 app.listen(3000, function () {
