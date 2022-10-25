@@ -1,17 +1,8 @@
-h1 {
-    margin-left: 10rem;    
-    margin-right: 20rem;    
+html {
+  min-height: 100%;
+  position: relative;
 }
 
-p {
-    margin-left: 10rem;
-    margin-right: 20rem;
-}
-
-.form {
-    margin-left: 10rem;
-    margin-right: 20rem;
-}
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
